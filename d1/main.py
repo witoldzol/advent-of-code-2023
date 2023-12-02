@@ -1,25 +1,16 @@
 import re
+import logging as log
+from typing import List 
+
 FILE_NAME = 'sample_input'
 
-# data = open(FILE_NAME, 'r').read()
-# lines = str(data).split('\n')
-# total = 0
-# for line in lines:
-#     first_last = ()
-#     line = line.strip()
-#     m = re.findall(r'\d', line)
-#     if len(m)>=2:
-#         total+=m[0]
-#         total+=m[-1]
-#     elif len(m)==1:
-#         total+=m[0]*2
-#     else:
-#         raise Exception(f'no input found! {m}')
+def data() -> List[str]:
+    data = open(FILE_NAME, 'r').read()
+    return data.split('\n')
 
-with open(FILE_NAME) as f:
+def main():
     total = 0
-    for line in f:
-        first_last = ()
+    for line in data():
         line = line.strip()
         m = re.findall(r'\d', line)
         if len(m)>=2:
@@ -30,3 +21,6 @@ with open(FILE_NAME) as f:
         else:
             raise Exception('no input found!')
     print(f'Total: {total}')
+
+if __name__ == "__main__":
+    main()
